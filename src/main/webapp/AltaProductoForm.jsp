@@ -13,8 +13,8 @@
 
 	<div class = "container shadow mt-4" >
 		<h1 style="text-align:center">Alta Producto</h1>
+		
 		<form action="Principal" method ="post" class="w-50 mx-auto">
-			
 			<label>codigo:</label>
 			<input type="text" name="codigo" class="form-control" placeholder="codigo">
 			<br><br>
@@ -29,10 +29,21 @@
 			<br><br>
 			<label>Caducidad:</label>
 			<input type="date" name="caducidad" class="form-control" placeholder="caducidad">
-			<br><br>
-			<input type="submit" value="Dar alta">
+			
 			<br><br>	
 		</form>
+		
+	<div class="form-group">
+		<label for ="seccion">Elige una seccion:</label>
+			<select class = "form-control" id="seccion" name="id_seccion" required">
+				<option value="">--Elige una seccion</option>
+				<c:forEach items="${secciones}" var="seccion">
+					<option value="${seccion.id}">${seccion.nombre}</option>
+				</c:forEach>
+			</select>
+	</div>
+		<br><br>
+			<input type="submit" value="Dar alta">
 		<a href="VerProductos" class="btn btn-primary">Volver</a>
 	</div>
 

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.ModeloProducto;
+import modelo.ModeloSeccion;
 import modelo.Producto;
+import modelo.Seccion;
 
 /**
  * Servlet implementation class Principal
@@ -34,6 +37,13 @@ public class Principal extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ModeloSeccion ms = new ModeloSeccion();
+		ArrayList<Seccion>secciones = new ArrayList<Seccion>();
+		ms.conectar();
+		secciones=ms.getSecciones();
+		ms.cerrar();
+		
+		request.setAttribute("secciones", secciones);
 		request.getRequestDispatcher("AltaProductoForm.jsp").forward(request, response);	
 		
 	}
@@ -45,6 +55,8 @@ public class Principal extends HttpServlet {
 		
 		Producto producto = new Producto();
 		ModeloProducto mp = new ModeloProducto();
+		Seccion seccion = new Seccion();
+		
 		
 		producto.setCodigo(request.getParameter("codigo"));
 		producto.setNombre(request.getParameter("nombre"));
@@ -59,12 +71,14 @@ public class Principal extends HttpServlet {
 			e.printStackTrace();
 		}
 		producto.setCaducidad(caducidad);
+		producto.setSeccion(seccion);
 		try {
 			mp.AltaProducto(producto);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}	
+		
 		request.getRequestDispatcher("VerProductos").forward(request, response);
 		
 	}

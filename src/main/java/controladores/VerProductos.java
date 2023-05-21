@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.ModeloProducto;
+import modelo.ModeloSeccion;
 import modelo.Producto;
+import modelo.Seccion;
 
 /**
  * Servlet implementation class VerProductos
@@ -31,10 +33,12 @@ public class VerProductos extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Producto>productos = new ArrayList<Producto>();
 		ModeloProducto mp = new ModeloProducto();
+		mp.conectar();
 		
-		productos = mp.getProductos();
+		ArrayList<Producto>productos = mp.getProductos();
+		mp.cerrar();
+		
 		request.setAttribute("productos", productos);
 		request.getRequestDispatcher("VerProductos.jsp").forward(request, response);
 	}
