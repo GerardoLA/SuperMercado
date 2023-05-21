@@ -1,8 +1,6 @@
 package controladores;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,21 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.ModeloProducto;
-import modelo.ModeloSeccion;
-import modelo.Producto;
-import modelo.Seccion;
 
 /**
- * Servlet implementation class VerProductos
+ * Servlet implementation class EliminarProducto
  */
-@WebServlet("/VerProductos")
-public class VerProductos extends HttpServlet {
+@WebServlet("/EliminarProducto")
+public class EliminarProducto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VerProductos() {
+    public EliminarProducto() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,17 +29,10 @@ public class VerProductos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ModeloProducto mp = new ModeloProducto();
-		mp.conectar();
+		int id = Integer.parseInt(request.getParameter("id"));
+		mp.eliminarproducto(id);
 		
-		ArrayList<Producto>productos = mp.getProductos();
-		mp.cerrar();
-		ModeloSeccion ms = new ModeloSeccion();
-		ms.conectar();
-		ArrayList<Seccion>secciones = ms.getSecciones();
-		
-		request.setAttribute("secciones", secciones);
-		request.setAttribute("productos", productos);
-		request.getRequestDispatcher("VerProductos.jsp").forward(request, response);
+		request.getRequestDispatcher("VerProductos").forward(request, response);
 	}
 
 	/**

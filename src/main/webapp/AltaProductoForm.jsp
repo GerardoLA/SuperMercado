@@ -29,11 +29,8 @@
 			<br><br>
 			<label>Caducidad:</label>
 			<input type="date" name="caducidad" class="form-control" placeholder="caducidad">
-			
-			<br><br>	
-		</form>
-		
-	<div class="form-group">
+			<br><br>
+			<div class="form-group">
 		<label for ="seccion">Elige una seccion:</label>
 			<select class = "form-control" id="seccion" name="id_seccion" required">
 				<option value="">--Elige una seccion</option>
@@ -45,7 +42,10 @@
 		<br><br>
 			<input type="submit" value="Dar alta">
 		<a href="VerProductos" class="btn btn-primary">Volver</a>
-	</div>
+	</div>	
+		</form>
+		
+	
 
 </body>
 </html>

@@ -56,7 +56,7 @@ public class Principal extends HttpServlet {
 		Producto producto = new Producto();
 		ModeloProducto mp = new ModeloProducto();
 		Seccion seccion = new Seccion();
-		
+		ModeloSeccion ms = new ModeloSeccion();
 		
 		producto.setCodigo(request.getParameter("codigo"));
 		producto.setNombre(request.getParameter("nombre"));
@@ -71,7 +71,7 @@ public class Principal extends HttpServlet {
 			e.printStackTrace();
 		}
 		producto.setCaducidad(caducidad);
-		producto.setSeccion(seccion);
+		producto.setSeccion(ms.seccion(Integer.parseInt(request.getParameter("id_seccion"))));
 		try {
 			mp.AltaProducto(producto);
 		} catch (SQLException e) {
