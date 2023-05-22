@@ -72,12 +72,7 @@ public class Principal extends HttpServlet {
 		}
 		producto.setCaducidad(caducidad);
 		producto.setSeccion(ms.seccion(Integer.parseInt(request.getParameter("id_seccion"))));
-		try {
-			mp.AltaProducto(producto);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
+		mp.AltaProducto(producto);	
 		
 		request.getRequestDispatcher("VerProductos").forward(request, response);
 		
