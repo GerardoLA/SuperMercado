@@ -9,9 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="ModificarProductForm" method="post"  class="w-50 mx-auto">
-<input type = "hidden" name= "id" value="${producto.id}" >${producto.id}
-	<label>codigo:</label>
+	<form action="ModificarProducto" method="get"  class="w-50 mx-auto">
+			
+			<input type = "hidden" name= "id" value="${producto.id}" >${producto.id}
+			<label>Codigo:</label>
 			<input type="text" name="codigo" class="form-control" value= "${producto.codigo }" placeholder="codigo">
 			<br><br>
 			<label>nombre:</label>
@@ -27,15 +28,15 @@
 			<input type="date" name="caducidad" class="form-control" placeholder="caducidad"value= "${producto.caducidad }">
 			<br><br>
 			<div class="form-group">
-					seleccion:<select name ="rol">
+					seccion:<select name ="seccion">
 			<option ></option>
-			 <c:forEach items="${selecciones}" var="rol">
+			 <c:forEach items="${secciones}" var="seccion">
 				<c:choose>
-					<c:when test="${producto.seleccion.id==seleccion.id}">
-						<option selected value="${seleccion.nombre}">${seleccion.nombre}</option>
+					<c:when test="${producto.seccion.id==seleccion.id}">
+						<option selected value="${seccion.nombre}">${seccion.nombre}</option>
 					</c:when>
-					<c:when test="${producto.seleccion.id!=seleccion.id}">
-						<option value="${seleccion.nombre}">${seleccion.nombre}</option>
+					<c:when test="${producto.seccion.id!=seccion.id}">
+						<option value="${seccion.nombre}">${seccion.nombre}</option>
 					</c:when>
 					</c:choose>
 				</c:forEach>
@@ -44,11 +45,11 @@
 		<br><br>
 			<input type="submit" value="Modificar">
 		<a href="VerProductos" class="btn btn-primary">Volver</a>
-	</div>	
+		
 		</form>
 		
 
-</form>
+
 
 
 </body>

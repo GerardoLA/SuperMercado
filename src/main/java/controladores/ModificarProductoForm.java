@@ -1,6 +1,8 @@
 package controladores;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,15 +35,19 @@ public class ModificarProductoForm extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Producto producto = new Producto();
 		ModeloProducto mp = new ModeloProducto();
-		Seccion seccion = new Seccion();
 		ModeloSeccion ms = new ModeloSeccion();
 		
 		int id = Integer.parseInt(request.getParameter("id"));
+		ArrayList<Seccion>secciones = new ArrayList<Seccion>();
+		
 		producto = mp.getProducto(id);
-		seccion = ms.seccion(id);
+		mp.cerrar();
+		secciones = ms.getSecciones();
+		ms.cerrar();
+		
 		
 		request.setAttribute("producto", producto);
-		request.setAttribute("seccion", seccion);
+		request.setAttribute("secciones", secciones);
 		
 	request.getRequestDispatcher("ModificarProducto.jsp").forward(request, response);
 	}

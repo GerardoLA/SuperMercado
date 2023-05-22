@@ -122,5 +122,24 @@ public class ModeloProducto extends Conector{
 		}
 		return producto;
 	}
+	
+	public boolean modificarUsuario(Producto producto) {
+		conectar();
+		try {
+			pst = getCon().prepareStatement("UPDATE productos set codigo=?,nombre=?,cantidad=?,precio=?,id_seccion WHERE id=?");
+			pst.setString(1, producto.getNombre());
+			pst.setString(2, producto.getNombre());
+			pst.setInt(3, producto.getCantidad());
+			pst.setDouble(4, producto.getPrecio());
+			pst.setInt(4, producto.getSeccion().getId());
+			pst.setInt(5, producto.getId());
+			pst.execute();
+			cerrar();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 }

@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form action="" method="post">
 <h1 style= "color:red">${mensaje}</h1>
 	<table class= "table table-striped">
 		<tr>
@@ -41,7 +42,11 @@
 					
 			</tr>
 		</c:forEach>
+		
+				<td><a href="BuscarProducto.jsp" class="btn btn-dark">Buscar Producto</a></td>
+		
 	</table>
 	<a href="Principal">Dar de alta</a>
+</form>	
 </body>
 </html>

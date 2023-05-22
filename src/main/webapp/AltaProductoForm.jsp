@@ -41,7 +41,7 @@
 	</div>
 		<br><br>
 			<input type="submit" value="Dar alta">
-		<a href="VerProductos" class="btn btn-primary">Volver</a>
+		<a href="VerProductos" class="btn btn-primary">LISTA PRODUCTOS</a>
 	</div>	
 		</form>
 		
