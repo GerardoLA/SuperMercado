@@ -113,6 +113,7 @@ public class ModeloProducto extends Conector{
 			producto.setNombre(rs.getString("nombre"));
 			producto.setCantidad(rs.getInt("cantidad"));
 			producto.setPrecio(rs.getDouble("precio"));
+			producto.setCaducidad(rs.getDate("caducidad"));
 			
 			producto.setSeccion(ms.seccion(rs.getInt("id_seccion")));
 			
@@ -126,15 +127,17 @@ public class ModeloProducto extends Conector{
 	public boolean modificarUsuario(Producto producto) {
 		conectar();
 		try {
-			pst = getCon().prepareStatement("UPDATE productos set codigo=?,nombre=?,cantidad=?,precio=?,id_seccion WHERE id=?");
-			pst.setString(1, producto.getNombre());
+			pst = getCon().prepareStatement("UPDATE productos set codigo=?,nombre=?,cantidad=?,precio=?,caducidad=?,id_seccion=? WHERE id=?");
+			pst.setString(1, producto.getCodigo());
 			pst.setString(2, producto.getNombre());
 			pst.setInt(3, producto.getCantidad());
 			pst.setDouble(4, producto.getPrecio());
-			pst.setInt(4, producto.getSeccion().getId());
-			pst.setInt(5, producto.getId());
+			pst.setDate(5, new Date(producto.getCaducidad().getTime()));
+			pst.setInt(6, producto.getSeccion().getId());
+			pst.setInt(7, producto.getId());
 			pst.execute();
-			cerrar();
+			getCon().close();
+			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
