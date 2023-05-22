@@ -72,7 +72,24 @@ public class Principal extends HttpServlet {
 		}
 		producto.setCaducidad(caducidad);
 		producto.setSeccion(ms.seccion(Integer.parseInt(request.getParameter("id_seccion"))));
-		mp.AltaProducto(producto);	
+		//comprobacion si codigo existe
+		if (mp.codigoDuplicado(producto.getCodigo())) {
+			request.setAttribute("mensaje", "El codigo ya existe");
+			request.getRequestDispatcher("VerProductos").forward(request, response);
+		}else if(producto.getPrecio()<0 || producto.getCantidad()<0) {
+			request.setAttribute("mensaje", "El precio y la cantidad tienen que ser positivo");
+			request.getRequestDispatcher("VerProductos").forward(request, response);
+		}else if(Integer.parseInt(request.getParameter("id_seccion"))==0) {
+			request.setAttribute("mensaje", "la seccion tiene que existir");
+			request.getRequestDispatcher("VerProductos").forward(request, response);
+		}else if (producto.getCaducidad().before(new Date())) {
+			request.setAttribute("mensaje", "la caducidad no puede ser anterior a la fecha actual");
+			request.getRequestDispatcher("VerProductos").forward(request, response);
+		
+		}else{mp.AltaProducto(producto);	
+		}
+		
+		
 		
 		request.getRequestDispatcher("VerProductos").forward(request, response);
 		

@@ -77,5 +77,26 @@ public class ModeloProducto extends Conector{
 		}
 		return false;
 	}
+	public boolean codigoDuplicado(String codigo) {
+		conectar();
+		boolean  existe=false;
+		try {
+			pst = getCon().prepareStatement("SELECT codigo from productos where codigo=?");
+			pst.setString(1, codigo);
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			 if(codigo.equals(rs.getString("codigo"))){
+				 existe=true;
+				 
+			 }
+			
+			cerrar();
+			return existe;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return existe;
+	}
 
 }

@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1 style= "color:red">${mensaje}</h1>
 	<table class= "table table-striped">
 		<tr>
 			<th colspan="7" style="text-align:center">PRODUCTOS</th>
