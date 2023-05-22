@@ -24,6 +24,7 @@
 			<th scope ="col">CADUCIDAD</th>
 			<th scope ="col">NOMBRE_SECCION</th>
 			<th scope ="col">ELIMINAR</th>
+			<th scope ="col">MODIFICAR</th>
 		</tr>
 		
 		<c:forEach items="${productos}" var="producto">
@@ -36,6 +37,7 @@
 				<td scope ="row">${producto.caducidad}</td>
 				<td scope ="row">${producto.seccion.nombre}</td>
 				<td><a href="EliminarProducto?id=${producto.id}" class="btn btn-secondary">Eliminar</a></td>
+				<td><a href="ModificarProductoForm?id=${producto.id}" class="btn btn-secondary">Modificar</a></td>
 					
 			</tr>
 		</c:forEach>
