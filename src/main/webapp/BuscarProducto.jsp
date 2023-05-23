@@ -10,7 +10,7 @@
 </head>
 <body>
 <form action="VerProducto">
-	<label>Introduzca las letras o palabras clave:</label>
+	<label>Introduzca nombre:</label>
 	<input type="text" name="nombre">
 	<input type ="submit" value = "BUSCAR" class= "btn btn-primary">
 

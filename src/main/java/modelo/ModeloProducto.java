@@ -124,6 +124,32 @@ public class ModeloProducto extends Conector{
 		return producto;
 	}
 	
+	public Producto getProductoNombre(String nombre) {
+		conectar();
+		Producto producto = new Producto();
+		ModeloProducto mp = new ModeloProducto();
+		ModeloSeccion ms = new ModeloSeccion();
+		 
+		try {
+			pst = getCon().prepareStatement("SELECT * FROM  productos where nombre=?");
+			pst.setString(1, nombre);
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			producto.setId(rs.getInt("id"));
+			producto.setCodigo(rs.getString("codigo"));
+			producto.setNombre(rs.getString("nombre"));
+			producto.setCantidad(rs.getInt("cantidad"));
+			producto.setPrecio(rs.getDouble("precio"));
+			producto.setCaducidad(rs.getDate("caducidad"));
+			producto.setSeccion(ms.seccion(rs.getInt("id_seccion")));
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return producto;
+	}
+	
 	public boolean modificarUsuario(Producto producto) {
 		conectar();
 		try {
@@ -144,5 +170,7 @@ public class ModeloProducto extends Conector{
 		}
 		return false;
 	}
+	
+
 
 }

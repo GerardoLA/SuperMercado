@@ -9,10 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="VerProductos" method="get"  class="w-50 mx-auto">
+	<form action="ModificarProducto" method="get"  class="w-50 mx-auto">
 			
 			
 			<br><br>
+			<label>ID</label><br>
+			<label>${producto.id}</label><br><br>
+			<input type="hidden" value="${producto.id}"name="id">
 			<label>Codigo:</label>
 			<input type="text" name="codigo" class="form-control" value= "${producto.codigo }" placeholder="codigo">
 			<br><br>

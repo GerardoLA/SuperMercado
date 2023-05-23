@@ -46,7 +46,10 @@
 				<td><a href="BuscarProducto.jsp" class="btn btn-dark">Buscar Producto</a></td>
 		
 	</table>
-	<a href="Principal">Dar de alta</a>
+	<a href="Principal" class="btn btn-primary">Dar de alta</a>
 </form>	
+<form action=""></form>
+	<h1>BUSCADORES</h1>
+	<label>Introduce nombre:</label>
 </body>
 </html>
