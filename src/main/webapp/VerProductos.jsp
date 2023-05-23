@@ -44,12 +44,16 @@
 		</c:forEach>
 		
 	</table>
-	<a href="Principal" class="btn btn-primary">Dar de alta</a>
+	<a href="AltaProducto" class="btn btn-primary">Dar de alta</a>
+	<a href="VerProductos" class="btn btn-primary">Lista Productos</a>
 </form>	
-<form action=""method="get"  class="w-50 mx-auto"></form>
-	<h3>BUSCADORES</h3>
-	<label>Introduce nombre:</label>
-	<input type="text" name ="nombre" class= "form-control" placeholder="nombre">
-	<a href="VerProducto?id=${producto.nombre }" class = "btn btn-secondary">BuscarProducto</a>
+<form action="BuscarPorNombre"method="get"  class="w-50 mx-auto">
+		<h3>BUSCADORES</h3>
+		<label>Introduce nombre:</label>
+		<input type="text" name ="nombre" class= "form-control" placeholder="nombre">
+		<input type="submit" value="BuscarNombre" name="buscador">
+		<input type="submit" value="BuscarCodigo" name="buscador">
+</form>
+
 </body>
 </html>

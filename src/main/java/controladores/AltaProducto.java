@@ -1,7 +1,6 @@
 package controladores;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,14 +20,14 @@ import modelo.Seccion;
 /**
  * Servlet implementation class Principal
  */
-@WebServlet("/Principal")
-public class Principal extends HttpServlet {
+@WebServlet("/AltaProducto")
+public class AltaProducto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Principal() {
+    public AltaProducto() {
         super();
         // TODO Auto-generated constructor stub
     }

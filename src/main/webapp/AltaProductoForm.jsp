@@ -14,7 +14,7 @@
 	<div class = "container shadow mt-4" >
 		<h1 style="text-align:center">Alta Producto</h1>
 		
-		<form action="Principal" method ="post" class="w-50 mx-auto">
+		<form method ="post" class="w-50 mx-auto">
 			<label>codigo:</label>
 			<input type="text" name="codigo" class="form-control" placeholder="codigo">
 			<br><br>
@@ -38,7 +38,7 @@
 					<option value="${seccion.id}">${seccion.nombre}</option>
 				</c:forEach>
 			</select>
-	</div>
+	<div>
 		<br><br>
 			<input type="submit" value="Dar alta">
 		<a href="VerProductos" class="btn btn-primary">LISTA PRODUCTOS</a>
