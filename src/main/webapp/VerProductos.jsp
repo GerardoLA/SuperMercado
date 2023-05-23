@@ -43,13 +43,12 @@
 			</tr>
 		</c:forEach>
 		
-				<td><a href="BuscarProducto.jsp" class="btn btn-dark">Buscar Producto</a></td>
-		
 	</table>
 	<a href="Principal" class="btn btn-primary">Dar de alta</a>
 </form>	
-<form action=""></form>
-	<h1>BUSCADORES</h1>
+<form action=""method="get"  class="w-50 mx-auto"></form>
+	<h3>BUSCADORES</h3>
 	<label>Introduce nombre:</label>
+	<input type="text" name ="nombre" class= "form-control" placeholder="nombre">
 </body>
 </html>

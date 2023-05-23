@@ -58,6 +58,7 @@ public class ModeloSeccion extends Conector{
 			pst = getCon().prepareStatement("SELECT * FROM secciones where nombre=?");
 			pst.setString(1, nombre);
 			ResultSet rs = pst.executeQuery();
+			rs.next();
 			seccion.setId(rs.getInt("id"));
 			seccion.setNombre(rs.getString("nombre"));
 			return seccion;

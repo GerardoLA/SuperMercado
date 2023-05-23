@@ -37,7 +37,8 @@ public class VerProducto extends HttpServlet {
 		mp.conectar();
 		String cadena= request.getParameter("nombre");
 		ArrayList<Producto>productos = mp.getProductos();
-		ArrayList<Producto>propductosEncontrados = new ArrayList<Producto>();
+		ArrayList<Producto>productoBuscado = new ArrayList<Producto>();
+		
 		mp.cerrar();
 		ModeloSeccion ms = new ModeloSeccion();
 		ms.conectar();
