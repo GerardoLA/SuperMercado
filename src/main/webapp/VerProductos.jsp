@@ -50,5 +50,6 @@
 	<h3>BUSCADORES</h3>
 	<label>Introduce nombre:</label>
 	<input type="text" name ="nombre" class= "form-control" placeholder="nombre">
+	<a href="VerProducto?id=${producto.nombre }" class = "btn btn-secondary">BuscarProducto</a>
 </body>
 </html>
