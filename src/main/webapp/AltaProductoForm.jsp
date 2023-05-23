@@ -38,8 +38,9 @@
 					<option value="${seccion.id}">${seccion.nombre}</option>
 				</c:forEach>
 			</select>
-	<div>
+	</div>
 		<br><br>
+		<div>
 			<input type="submit" value="Dar alta">
 		<a href="VerProductos" class="btn btn-primary">LISTA PRODUCTOS</a>
 	</div>	
