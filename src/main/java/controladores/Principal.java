@@ -82,7 +82,7 @@ public class Principal extends HttpServlet {
 		}else if(Integer.parseInt(request.getParameter("id_seccion"))==0) {
 			request.setAttribute("mensaje", "la seccion tiene que existir");
 			request.getRequestDispatcher("VerProductos").forward(request, response);
-		}else if (producto.getCaducidad().before(new Date())) {
+		}else if (producto.getCaducidad().after(new Date())) {
 			request.setAttribute("mensaje", "la caducidad no puede ser anterior a la fecha actual");
 			request.getRequestDispatcher("VerProductos").forward(request, response);
 		
