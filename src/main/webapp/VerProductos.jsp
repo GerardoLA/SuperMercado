@@ -56,8 +56,9 @@
 </form>
 <form action="FiltrarPorPrecio" method="get" class="w-50-mx-auto">
 		<h3>FiltraPrecios</h3>
+		<input type ="submit" value="FiltrarPorPrecio">
 		<input type="text" name="precioMax" class="form-control" placeholder="precioMax">
-		<input type=" text" name="precioMin" class="form-control"  placeholder="precioMin">
+		<input type="text"  name="precioMin" class="form-control"  placeholder="precioMin">
 		
 </form>
 <br>
