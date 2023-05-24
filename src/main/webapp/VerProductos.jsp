@@ -7,7 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<title>Insert title here</title>
+<title>Productos</title>
 </head>
 <body>
 <form action="" method="get">
@@ -44,6 +44,13 @@
 		</c:forEach>
 		
 	</table>
+		<h3>Ordenar</h3>
+				<form >
+				<input type ="submit" value ="Ascendente" name="ordenator">
+				<input type ="submit" value ="Descendente" name="ordenator">
+				
+				</form>
+	
 	<a href="AltaProducto" class="btn btn-primary">Dar de alta</a>
 	<a href="VerProductos" class="btn btn-primary">Lista Productos</a>
 </form>	
