@@ -64,7 +64,7 @@ public class AltaProducto extends HttpServlet {
 		
 		Date caducidad = null;
 		try {
-			caducidad = new SimpleDateFormat("yyyy-mm-dd").parse(request.getParameter("caducidad"));
+			caducidad = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("caducidad"));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,7 +81,7 @@ public class AltaProducto extends HttpServlet {
 		}else if(Integer.parseInt(request.getParameter("id_seccion"))==0) {
 			request.setAttribute("mensaje", "la seccion tiene que existir");
 			request.getRequestDispatcher("VerProductos").forward(request, response);
-		}else if (producto.getCaducidad().after(new Date())) {
+		}else if (producto.getCaducidad().before(new Date())) {
 			request.setAttribute("mensaje", "la caducidad no puede ser anterior a la fecha actual");
 			request.getRequestDispatcher("VerProductos").forward(request, response);
 		
