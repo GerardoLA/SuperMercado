@@ -45,15 +45,14 @@
 		
 	</table>
 		<h3>Ordenar</h3>
-				<form >
-				<input type ="submit" value ="Ascendente" name="ordenator">
-				<input type ="submit" value ="Descendente" name="ordenator">
-				
-				</form>
-	
+		
 	<a href="AltaProducto" class="btn btn-primary">Dar de alta</a>
 	<a href="VerProductos" class="btn btn-primary">Lista Productos</a>
 </form>	
+		<form action="OrdenarPorCodigo" method="get">
+					<input type ="submit" value ="Descendente" name="ordenator">
+					<input type ="submit" value ="Ascendente" name="ordenator">
+				</form>
 <form action="BuscarPorNombre"method="get"  class="w-50 mx-auto">
 		<h3>BUSCADORES</h3>
 		<label>Introduce nombre:</label>

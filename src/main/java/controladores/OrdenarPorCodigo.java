@@ -38,12 +38,13 @@ public class OrdenarPorCodigo extends HttpServlet {
 		ModeloSeccion ms = new ModeloSeccion();
 		ArrayList<Producto>productos = mp.getProductos();
 		
-		if(request.getParameter("ordenator").equals("Ascendente")){
-				productos.sort(cp);
+		if(request.getParameter("ordenator").equals("Ascendente")) {
+			productos.sort(cp);
 		}
 		else {
 			productos.sort(cp.reversed());
 		}
+		
 		request.setAttribute("secciones", ms.getSecciones());
 		request.setAttribute("productos", productos);
 		request.getRequestDispatcher("VerProductos.jsp").forward(request, response);

@@ -14,7 +14,7 @@ public class Producto {
 	
 	public Producto(int id, String codigo, String nombre, int cantidad, Double precio, Date caducidad,
 			Seccion seccion) {
-		super();
+		
 		this.id = id;
 		this.codigo = codigo;
 		this.nombre = nombre;

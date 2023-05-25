@@ -2,6 +2,7 @@ package controladores;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +19,7 @@ import modelo.Seccion;
  * Servlet implementation class VerProductos
  */
 @WebServlet("/VerProductos")
-public class VerProductos extends HttpServlet {
+public class VerProductos extends HttpServlet{
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -41,6 +42,8 @@ public class VerProductos extends HttpServlet {
 		ModeloSeccion ms = new ModeloSeccion();
 		ms.conectar();
 		ArrayList<Seccion>secciones = ms.getSecciones();
+		
+		//((ArrayList<Producto>) productos).sort(this);
 		
 		request.setAttribute("secciones", secciones);
 		request.setAttribute("productos", productos);
