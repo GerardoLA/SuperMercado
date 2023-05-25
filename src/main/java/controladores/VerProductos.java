@@ -35,13 +35,15 @@ public class VerProductos extends HttpServlet{
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ModeloProducto mp = new ModeloProducto();
-		mp.conectar();
+		
 		
 		ArrayList<Producto>productos = mp.getProductos();
-		mp.cerrar();
+		
 		ModeloSeccion ms = new ModeloSeccion();
-		ms.conectar();
+		
 		ArrayList<Seccion>secciones = ms.getSecciones();
+		
+		
 		
 		//((ArrayList<Producto>) productos).sort(this);
 		

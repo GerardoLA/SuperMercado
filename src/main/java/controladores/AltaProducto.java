@@ -16,6 +16,7 @@ import modelo.ModeloProducto;
 import modelo.ModeloSeccion;
 import modelo.Producto;
 import modelo.Seccion;
+import modelo.Supermercado;
 
 /**
  * Servlet implementation class Principal
@@ -38,10 +39,12 @@ public class AltaProducto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ModeloSeccion ms = new ModeloSeccion();
 		ArrayList<Seccion>secciones = new ArrayList<Seccion>();
-		ms.conectar();
 		secciones=ms.getSecciones();
-		ms.cerrar();
+		ArrayList<Supermercado>supermercados = new ArrayList<Supermercado>();
+		ModeloProducto mp = new ModeloProducto();
+		supermercados = mp.getSupermercados();
 		
+		request.setAttribute("supermercados", supermercados);
 		request.setAttribute("secciones", secciones);
 		request.getRequestDispatcher("AltaProductoForm.jsp").forward(request, response);	
 		
@@ -52,15 +55,18 @@ public class AltaProducto extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+
 		Producto producto = new Producto();
 		ModeloProducto mp = new ModeloProducto();
 		Seccion seccion = new Seccion();
 		ModeloSeccion ms = new ModeloSeccion();
 		
+		
 		producto.setCodigo(request.getParameter("codigo"));
 		producto.setNombre(request.getParameter("nombre"));
 		producto.setCantidad(Integer.parseInt(request.getParameter("cantidad")));
 		producto.setPrecio(Double.parseDouble(request.getParameter("precio")));
+		String [] supermercados= request.getParameterValues("id_supermercado");
 		
 		Date caducidad = null;
 		try {
@@ -71,6 +77,9 @@ public class AltaProducto extends HttpServlet {
 		}
 		producto.setCaducidad(caducidad);
 		producto.setSeccion(ms.seccion(Integer.parseInt(request.getParameter("id_seccion"))));
+		
+		
+		
 		//comprobacion si codigo existe
 		if (mp.codigoDuplicado(producto.getCodigo())) {
 			request.setAttribute("mensaje", "El codigo ya existe");
@@ -85,8 +94,11 @@ public class AltaProducto extends HttpServlet {
 			request.setAttribute("mensaje", "la caducidad no puede ser anterior a la fecha actual");
 			request.getRequestDispatcher("VerProductos").forward(request, response);
 		
-		}else{mp.AltaProducto(producto);	
+		}else{
+			mp.AltaProducto(producto);	
+			mp.AltaProductoSuperMercado(mp.maxIdProducto(), supermercados);
 		}
+		
 		
 		
 		

@@ -38,13 +38,18 @@
 					<option value="${seccion.id}">${seccion.nombre}</option>
 				</c:forEach>
 			</select>
-	</div>
+			<c:forEach items="${supermercados }" var ="supermercado">
+				<input type="checkbox" name="id_supermercado" value="${supermercado.id}">${supermercado.nombre}
+			</c:forEach>
+		</div>
+		
 		<br><br>
 		<div>
 			<input type="submit" value="Dar alta">
 		<a href="VerProductos" class="btn btn-primary">LISTA PRODUCTOS</a>
 	</div>	
 		</form>
+		</div>
 		
 	
 

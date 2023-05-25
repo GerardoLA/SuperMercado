@@ -31,6 +31,39 @@ public class ModeloProducto extends Conector{
 		return false;
 	}
 	
+	public  int maxIdProducto() {
+		conectar();
+		int maxIdProducto=0;
+		try {
+			pst = getCon().prepareStatement("SELECT max(id) FROM PRODUCTOS");
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+			maxIdProducto = rs.getInt(1);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return maxIdProducto;
+	}
+	
+	public boolean AltaProductoSuperMercado(int id_producto,String[]supermercados) {
+		conectar();
+		try {
+			pst = getCon().prepareStatement("INSERT INTO productos_supermercados (id_producto,id_supermercado)VALUES(?,?)");
+			pst.setInt(1, id_producto);
+			for (String supermercado : supermercados) {
+				pst.setInt(2,Integer.parseInt(supermercado));
+				pst.execute();
+			}
+			cerrar();
+			return true;
+		}catch (Exception e) {
+			e.printStackTrace();		}
+	return false;
+	}
+	
 	public ArrayList<Producto>getProductos(){
 		conectar();
 		ArrayList<Producto>productos = new ArrayList<Producto>();
@@ -169,9 +202,37 @@ public class ModeloProducto extends Conector{
 			e.printStackTrace();
 		}
 		return false;
+		
+		}
+	
+	public ArrayList<Supermercado>getSupermercados(){
+		conectar();
+		ArrayList<Supermercado>supermercados = new ArrayList<Supermercado>();
+		try {
+			pst = getCon().prepareStatement("SELECT * from supermercados");
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				Supermercado supermercado = new Supermercado();
+				supermercado.setId(rs.getInt("id"));
+				supermercado.setNombre(rs.getString("nombre"));
+				supermercados.add(supermercado);
+				
+			}
+			cerrar();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return supermercados;
+	
 	}
 	
 	
-
-
 }
+	
+	
+
+
+
