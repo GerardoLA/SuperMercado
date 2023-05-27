@@ -61,7 +61,30 @@ public class ModeloProducto extends Conector{
 			return true;
 		}catch (Exception e) {
 			e.printStackTrace();		}
-	return false;
+		return false;
+	}
+	
+	public ArrayList<Supermercado>getSupermercadoProducto(int id_producto){
+		ArrayList<Supermercado>supermercados = new ArrayList<Supermercado>();
+		conectar();
+		try {
+			pst = getCon().prepareStatement("SELECT * FROM supermercados where id in(select id from productos_supermercados where id_producto=?)");
+			pst.setInt(1, id_producto);
+			
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				Supermercado supermercado = new Supermercado();
+				supermercado.setId(rs.getInt("id"));
+				supermercado.setNombre(rs.getString("nombre"));
+				supermercados.add(supermercado);
+			}
+			cerrar();
+			return supermercados;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return supermercados;	
 	}
 	
 	public ArrayList<Producto>getProductos(){
@@ -110,6 +133,22 @@ public class ModeloProducto extends Conector{
 		}
 		return false;
 	}
+	
+	public boolean eliminarProductoSupermercado(int id_producto) {
+		conectar();
+		try {
+			pst = getCon().prepareStatement("DELETE FROM productos_supermercados where id_producto=?");
+			pst.setInt(1, id_producto);
+			pst.execute();
+			cerrar();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	public boolean codigoDuplicado(String codigo) {
 		conectar();
 		boolean  existe=false;
@@ -183,7 +222,7 @@ public class ModeloProducto extends Conector{
 		return producto;
 	}
 	
-	public boolean modificarUsuario(Producto producto) {
+	public boolean modificarProducto(Producto producto) {
 		conectar();
 		try {
 			pst = getCon().prepareStatement("UPDATE productos set codigo=?,nombre=?,cantidad=?,precio=?,caducidad=?,id_seccion=? WHERE id=?");

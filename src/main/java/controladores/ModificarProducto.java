@@ -54,7 +54,7 @@ public class ModificarProducto extends HttpServlet {
 		producto.setSeccion(ms.getSeccion(nombre_seccion));
 		
 		ModeloProducto mp = new ModeloProducto();
-		mp.modificarUsuario(producto);
+		mp.modificarProducto(producto);
 		try {
 			mp.getCon().close();
 		} catch (SQLException e) {

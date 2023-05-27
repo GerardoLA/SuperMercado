@@ -38,6 +38,7 @@
 				<td scope ="row">${producto.caducidad}</td>
 				<td scope ="row">${producto.seccion.nombre}</td>
 				<td><a href="EliminarProducto?id=${producto.id}" class="btn btn-secondary">Eliminar</a></td>
+				<td><a href="EliminarEspecial?id=${producto.id}" class="btn btn-secondary">EliminarEspecial</a></td>
 				<td><a href="ModificarProductoForm?id=${producto.id}" class="btn btn-secondary">Modificar Producto</a></td>
 					
 			</tr>
