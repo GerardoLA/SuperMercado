@@ -179,10 +179,8 @@ public class ModeloProducto extends Conector{
 			cerrar();
 			return existe;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return existe;
 		}
-		return existe;
 	}
 	
 	public boolean buscarProductoSuper(int id) {
@@ -229,7 +227,7 @@ public class ModeloProducto extends Conector{
 		}
 		return producto;
 	}
-	
+
 	public Producto getProductoNombre(String nombre) {
 		conectar();
 		Producto producto = new Producto();

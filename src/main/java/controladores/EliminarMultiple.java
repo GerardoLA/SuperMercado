@@ -31,7 +31,19 @@ public class EliminarMultiple extends HttpServlet {
 		ModeloProducto mp = new ModeloProducto();
 		String cadena = request.getParameter("codigos");
 		String[]codigos = cadena.split(",");
-		mp.eliminarProducto(codigos);
+		boolean codigoexistente = true;
+		for (String codigo : codigos) {
+			boolean existe = mp.codigoDuplicado(codigo);
+			
+			if(existe==false) {
+				codigoexistente=false;
+				request.setAttribute("mensaje","algún codigo no existe!!");
+				break;	
+			}	
+		}
+		if(codigoexistente==true) {
+			mp.eliminarProducto(codigos);	
+		}
 		
 		request.getRequestDispatcher("VerProductos").forward(request, response);
 	}
