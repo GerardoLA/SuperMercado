@@ -9,6 +9,20 @@ import java.util.ArrayList;
 public class ModeloProducto extends Conector{
 	PreparedStatement pst;
 	
+	public void eliminarProducto(String[]codigos) {
+		conectar();
+		try {
+			pst =getCon().prepareStatement("DELETE FROM productos where codigo =?");
+			for (String codigo : codigos) {
+				pst.setString(1, codigo);
+				pst.execute();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public boolean AltaProducto(Producto producto)  {
 		conectar();
 		try {
@@ -169,6 +183,26 @@ public class ModeloProducto extends Conector{
 			e.printStackTrace();
 		}
 		return existe;
+	}
+	
+	public boolean buscarProductoSuper(int id) {
+		conectar();
+		boolean encontrado=false;
+		try {
+			pst = getCon().prepareStatement("SELECT * FROM productos_supermercados where id_producto=?");
+			pst.setInt(1, id);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				encontrado=true;
+			}
+			cerrar();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return encontrado;
 	}
 	public Producto getProducto(int id) {
 		conectar();

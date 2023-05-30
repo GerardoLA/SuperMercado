@@ -14,7 +14,7 @@
 <h1 style= "color:red">${mensaje}</h1>
 	<table class= "table table-striped">
 		<tr>
-			<th colspan="7" style="text-align:center">PRODUCTOS</th>
+			<th colspan="10" style="text-align:center">PRODUCTOS</th>
 		</tr>
 		<tr>
 			<th scope ="col">ID</th>
@@ -67,6 +67,12 @@
 		<input type="text" name="precioMax" class="form-control" placeholder="precioMax">
 		<input type="text"  name="precioMin" class="form-control"  placeholder="precioMin">
 		
+</form>
+<form action="EliminarMultiple" method= "get" class="eliminador">
+	<h3>Eliminar Multiple</h3>
+	<label>introduce codigos: </label>
+	<input type="text" name="codigos" class="form-control" placeholder="codigos">
+	<input type ="submit" value="EliminarMultiple" name="buscado">
 </form>
 
 <br>
